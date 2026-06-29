@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 1%;
+    --foreground: 0 0% 95%;
+    --card: 240 10% 4%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 10% 4%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 185 100% 50%;
+    --primary-foreground: 240 20% 1%;
+    --secondary: 240 5% 10%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 240 5% 8%;
+    --muted-foreground: 230 5% 57%;
+    --accent: 185 100% 50%;
+    --accent-foreground: 240 20% 1%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5% 12%;
+    --input: 240 5% 12%;
+    --ring: 185 100% 50%;
+    --chart-1: 185 100% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 45 100% 50%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.25rem;
+    --font-heading: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sidebar-background: 240 10% 3%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 185 100% 50%;
+    --sidebar-primary-foreground: 240 20% 1%;
+    --sidebar-accent: 240 5% 8%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 240 5% 12%;
+    --sidebar-ring: 185 100% 50%;
+
+    /* Obsidian Lab Tokens */
+    --obsidian: #020203;
+    --neural-grey: #8E9196;
+    --liquid-silver: #F2F2F2;
+    --kinetic-teal: #00F5FF;
+    --critical-amber: #FFB800;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --laser-line: rgba(255, 255, 255, 0.05);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    background-color: var(--obsidian);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(0, 245, 255, 0.2);
+    color: var(--liquid-silver);
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--obsidian);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 245, 255, 0.2);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 245, 255, 0.4);
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: var(--glass-bg);
+    border: 0.5px solid var(--glass-border);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+  }
+
+  .teal-glow {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.15), 0 0 60px rgba(0, 245, 255, 0.05);
+  }
+
+  .teal-text-glow {
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.4), 0 0 40px rgba(0, 245, 255, 0.1);
+  }
+
+  .laser-border-b {
+    border-bottom: 0.5px solid var(--laser-line);
+  }
+
+  .laser-border-t {
+    border-top: 0.5px solid var(--laser-line);
+  }
+
+  .text-gradient-teal {
+    background: linear-gradient(135deg, #00F5FF 0%, #00B4D8 50%, #0077B6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .font-technical {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .animate-pulse-teal {
+    animation: pulseTeal 4s ease-in-out infinite;
+  }
+
+  @keyframes pulseTeal {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    5% { opacity: 0.8; }
+    10% { opacity: 1; }
+    15% { opacity: 0.6; }
+    20% { opacity: 1; }
+  }
+
+  .animate-flicker {
+    animation: flicker 0.3s ease-in-out;
+  }
+
+  @keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+
+  .scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.1), transparent);
+    z-index: 9999;
+    pointer-events: none;
+    animation: scanline 8s linear infinite;
+  }
+}
